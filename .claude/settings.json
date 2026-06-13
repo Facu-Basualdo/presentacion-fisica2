@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/facun/.claude/skills/interactive-lecture-deck/references/**)",
+      "Read(//c/Users/facun/.claude/skills/interactive-lecture-deck/templates/**)"
+    ]
+  }
+}
