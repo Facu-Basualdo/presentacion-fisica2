@@ -35,19 +35,21 @@ export default function Slide07ResultadosSin() {
         Caso 1 — <span className="text-[var(--color-accent)]">sin</span> núcleo de hierro
       </motion.h2>
 
-      <div className="mt-auto grid grid-cols-[1fr_1.1fr_0.9fr] gap-8 items-start">
-        <DataTable title="Datos medidos" items={medidos} baseDelay={0.4} accent="--color-accent-2" />
-        <DataTable title="Valores calculados" items={calculados} baseDelay={0.55} accent="--color-accent" />
+      <div className="mt-auto grid grid-cols-[0.85fr_1.15fr] gap-8 items-stretch">
+        <div className="flex flex-col gap-5">
+          <DataTable title="Datos medidos" items={medidos} baseDelay={0.4} accent="--color-accent-2" />
+          <DataTable title="Valores calculados" items={calculados} baseDelay={0.55} accent="--color-accent" />
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.5 }}
-          className="rounded-2xl border border-[var(--color-divider)] bg-[var(--color-bg-card)]/50 p-4"
+          className="flex flex-col rounded-2xl border border-[var(--color-divider)] bg-[var(--color-bg-card)]/50 p-5"
         >
           <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
             Diagrama de tensión
           </h3>
-          <div className="h-44">
-            <VoltagePhasor vr={12.45} vl={0.12} vc={0.1} vTotal="12,64 V" scale={11} />
+          <div className="flex-1 min-h-[24rem]">
+            <VoltagePhasor vr={12.45} vl={0.12} vc={0.1} vTotal="12,64 V" scale={11} scaleY={700} />
           </div>
         </motion.div>
       </div>

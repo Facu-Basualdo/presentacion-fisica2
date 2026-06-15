@@ -11,12 +11,12 @@ export default function Slide03TeoriaCA() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-        className="mt-5 font-black leading-[0.95] tracking-[-0.03em] text-5xl md:text-6xl"
+        className="mt-5 text-center font-black leading-[0.95] tracking-[-0.03em] text-5xl md:text-6xl"
       >
         Corriente alterna y resistencia <span className="text-[var(--color-accent)]">óhmica</span>
       </motion.h2>
 
-      <div className="mt-auto grid grid-cols-[1.1fr_1fr] gap-10 items-center">
+      <div className="mt-auto mb-auto grid grid-cols-[1.1fr_1fr] gap-10 items-center">
         <div className="flex flex-col gap-4">
           <Formula label="Tensión aplicada" delay={0.35}>
             v(t) = V<Sub>m</Sub>·cos(ωt)

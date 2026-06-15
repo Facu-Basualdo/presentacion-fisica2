@@ -40,12 +40,12 @@ function CaseColumn({
         <h3 className="font-mono text-sm uppercase tracking-[0.18em]" style={{ color: `var(${accent})` }}>{title}</h3>
         <span className="font-mono text-base font-semibold" style={{ color: `var(${accent})` }}>φ = {phi}</span>
       </div>
-      <div className="grid grid-cols-2 gap-2 mt-1">
-        <div className="h-44">
+      <div className="grid grid-cols-[0.85fr_1.15fr] gap-2 mt-1">
+        <div className="h-60">
           <ImpedanceTriangle r="R" x={x} z={z} phi={phi} sign={1} />
         </div>
-        <div className="h-44">
-          <VoltagePhasor vr={vr} vl={vl} vc={vc} vTotal={vTotal} scale={warn ? 9 : 11} />
+        <div className="h-72">
+          <VoltagePhasor vr={vr} vl={vl} vc={vc} vTotal={vTotal} scale={warn ? 9 : 11} scaleY={warn ? 140 : 700} />
         </div>
       </div>
       <div className="mt-1 flex justify-around font-mono text-xs text-[var(--color-text-secondary)]">

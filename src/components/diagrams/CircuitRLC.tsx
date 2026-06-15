@@ -76,7 +76,7 @@ export default function CircuitRLC({ withCore = false }: { withCore?: boolean })
 
       {/* etiqueta I */}
       <text x="250" y="278" textAnchor="middle" fill="var(--color-accent)" fontSize="15" fontFamily="var(--font-mono)">
-        I →
+        ← I
       </text>
     </svg>
   );

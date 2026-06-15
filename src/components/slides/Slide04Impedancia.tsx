@@ -11,12 +11,12 @@ export default function Slide04Impedancia() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-        className="mt-5 font-black leading-[0.95] tracking-[-0.03em] text-5xl md:text-6xl"
+        className="mt-5 text-center font-black leading-[0.95] tracking-[-0.03em] text-5xl md:text-6xl"
       >
         Reactancias e <span className="text-[var(--color-accent)]">impedancia</span>
       </motion.h2>
 
-      <div className="mt-auto grid grid-cols-2 gap-x-10 gap-y-5">
+      <div className="mt-auto mx-auto grid w-full max-w-4xl grid-cols-2 gap-x-10 gap-y-5">
         <Formula label="Reactancia inductiva" delay={0.35}>
           X<Sub>L</Sub> = ω·L
         </Formula>
@@ -26,20 +26,20 @@ export default function Slide04Impedancia() {
         <Formula label="Reactancia neta" delay={0.55}>
           X = X<Sub>L</Sub> − X<Sub>C</Sub>
         </Formula>
-        <Formula label="Módulo de impedancia" delay={0.65} highlight>
-          |Z| = √(R<Sup>2</Sup> + X<Sup>2</Sup>)
-        </Formula>
-        <Formula label="Ángulo de desfase" delay={0.75}>
+        <Formula label="Ángulo de desfase" delay={0.65}>
           φ = arctg(X / R)
         </Formula>
-        <Formula label="Notación compleja" delay={0.85}>
-          Z = R + jX
+        <Formula label="Módulo de impedancia" delay={0.75} highlight>
+          |Z| = V / I
+        </Formula>
+        <Formula label="Módulo de impedancia · forma desarrollada" delay={0.85} highlight>
+          Z = √(R<Sup>2</Sup> + (ωL − 1/(ωC))<Sup>2</Sup>)
         </Formula>
       </div>
 
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
-        className="mt-7 grid grid-cols-3 gap-4 text-center font-mono text-sm"
+        className="mt-7 mb-auto mx-auto grid w-full max-w-4xl grid-cols-3 gap-4 text-center font-mono text-sm"
       >
         <div className="rounded-lg border border-[var(--color-divider)] bg-[var(--color-bg-card)]/40 py-3 text-[var(--color-text-secondary)]">
           X &gt; 0 → <span className="text-[var(--color-accent-2)]">inductivo</span>

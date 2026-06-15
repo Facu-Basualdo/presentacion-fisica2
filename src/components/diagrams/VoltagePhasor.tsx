@@ -7,21 +7,24 @@ interface VoltagePhasorProps {
   vl: number;
   vc: number;
   vTotal: string; // etiqueta del total
-  scale?: number; // px por volt
+  scale?: number; // px por volt (eje horizontal · VR)
+  scaleY?: number; // px por volt (eje vertical · VL/VC); por defecto = scale
 }
 
 /**
  * Diagrama de fasores de tensión. Eje de corriente horizontal (referencia).
  * VR en fase (→), VL adelantada 90° (↑), VC atrasada 90° (↓).
  * V = VR + (VL − VC) como suma vectorial.
+ * `scaleY` permite exagerar la escala vertical cuando VL y VC son muy pequeñas.
  */
-export default function VoltagePhasor({ vr, vl, vc, vTotal, scale = 14 }: VoltagePhasorProps) {
+export default function VoltagePhasor({ vr, vl, vc, vTotal, scale = 14, scaleY }: VoltagePhasorProps) {
+  const sy = scaleY ?? scale;
   const ox = 70;
   const oy = 160;
   const rx = ox + vr * scale; // punta de VR
-  const netY = oy - (vl - vc) * scale; // componente reactiva neta (hacia arriba si inductivo)
-  const vyTop = oy - vl * scale;
-  const vyBot = oy - (-vc) * scale; // vc hacia abajo
+  const netY = oy - (vl - vc) * sy; // componente reactiva neta (hacia arriba si inductivo)
+  const vyTop = oy - vl * sy;
+  const vyBot = oy - (-vc) * sy; // vc hacia abajo
 
   const arrow = (
     x1: number, y1: number, x2: number, y2: number, color: string, delay: number, width = 3.5

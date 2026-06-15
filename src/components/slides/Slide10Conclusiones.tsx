@@ -53,12 +53,12 @@ export default function Slide10Conclusiones() {
       <motion.h2
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-        className="relative z-10 mt-5 font-black leading-[0.95] tracking-[-0.03em] text-5xl md:text-6xl"
+        className="relative z-10 mt-5 text-center font-black leading-[0.95] tracking-[-0.03em] text-5xl md:text-6xl"
       >
         Lo que <span className="text-[var(--color-accent)]">demostramos</span>
       </motion.h2>
 
-      <div className="relative z-10 mt-auto grid grid-cols-2 gap-6">
+      <div className="relative z-10 mt-auto mb-auto grid w-full max-w-6xl mx-auto grid-cols-2 gap-6">
         {puntos.map((p, i) => {
           const Icon = p.icon;
           return (

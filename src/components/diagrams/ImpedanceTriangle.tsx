@@ -63,8 +63,8 @@ export default function ImpedanceTriangle({ r, x, z, phi, sign = 1 }: ImpedanceT
 
       {/* etiquetas */}
       <text x={ox + w / 2} y={oy + 26} textAnchor="middle" fill="var(--color-text-secondary)" fontSize="18" fontFamily="var(--font-mono)">R = {r}</text>
-      <text x={ox + w + 14} y={(oy + topY) / 2} fill="var(--color-accent-2)" fontSize="18" fontFamily="var(--font-mono)">X = {x}</text>
-      <text x={ox + w / 2 - 30} y={(oy + topY) / 2 + (sign === 1 ? -8 : 8)} fill="var(--color-accent)" fontSize="18" fontFamily="var(--font-mono)">Z = {z}</text>
+      <text x={ox + w - 12} y={(oy + topY) / 2} textAnchor="end" fill="var(--color-accent-2)" fontSize="18" fontFamily="var(--font-mono)">X = {x}</text>
+      <text x={ox + w / 2 - 7} y={(oy + topY) / 2 + (sign === 1 ? -8 : 8)} textAnchor="end" fill="var(--color-accent)" fontSize="18" fontFamily="var(--font-mono)">Z = {z}</text>
       <text x={ox + 56} y={oy + (sign === 1 ? -22 : 30)} fill="var(--color-warn)" fontSize="16" fontFamily="var(--font-mono)">φ = {phi}</text>
     </svg>
   );

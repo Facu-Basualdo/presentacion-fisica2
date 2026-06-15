@@ -20,12 +20,12 @@ export default function Slide06Montaje() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-        className="mt-5 font-black leading-[0.95] tracking-[-0.03em] text-5xl md:text-6xl"
+        className="mt-5 text-center font-black leading-[0.95] tracking-[-0.03em] text-5xl md:text-6xl"
       >
         Circuito y <span className="text-[var(--color-accent)]">mediciones</span>
       </motion.h2>
 
-      <div className="mt-auto grid grid-cols-[1.2fr_1fr] gap-10 items-center">
+      <div className="mt-auto mb-auto grid grid-cols-[1.2fr_1fr] gap-10 items-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4, duration: 0.6 }}
           className="rounded-2xl border border-[var(--color-divider)] bg-[var(--color-bg-card)]/50 p-6"
