@@ -29,14 +29,79 @@ export default function Slide01Cover() {
       <div aria-hidden className="pointer-events-none absolute -top-32 right-10 h-[560px] w-[560px] rounded-full blur-[140px] opacity-30 bg-[var(--color-accent-2)]" />
       <div aria-hidden className="pointer-events-none absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full blur-[130px] opacity-20 bg-[var(--color-accent)]" />
 
-      {/* onda senoidal de fondo */}
-      <svg aria-hidden viewBox="0 0 1200 200" className="pointer-events-none absolute top-1/2 left-0 w-full -translate-y-1/2 opacity-[0.12]">
+      {/* dos ondas desfasadas: corriente (cian) y tensión (azul) */}
+      <svg aria-hidden viewBox="0 0 1200 200" className="pointer-events-none absolute top-1/2 left-0 w-full -translate-y-1/2 opacity-[0.16]">
         <motion.path
           d="M0 100 Q75 -20 150 100 T300 100 T450 100 T600 100 T750 100 T900 100 T1050 100 T1200 100"
           stroke="var(--color-accent)" strokeWidth="3" fill="none"
           initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2.2, ease: "easeInOut" }}
         />
+        <motion.path
+          d="M0 100 Q75 220 150 100 T300 100 T450 100 T600 100 T750 100 T900 100 T1050 100 T1200 100"
+          stroke="var(--color-accent-2)" strokeWidth="3" fill="none"
+          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2.2, delay: 0.3, ease: "easeInOut" }}
+        />
       </svg>
+
+      {/* fasor rotatorio decorativo (arriba a la derecha) */}
+      <svg aria-hidden viewBox="0 0 200 200" className="pointer-events-none absolute top-20 right-28 h-56 w-56 opacity-50">
+        <circle cx="100" cy="100" r="78" fill="none" stroke="var(--color-divider)" strokeWidth="1.5" strokeDasharray="3 6" />
+        <circle cx="100" cy="100" r="4" fill="var(--color-accent)" />
+        <motion.g
+          style={{ originX: "100px", originY: "100px" }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+        >
+          <line x1="100" y1="100" x2="178" y2="100" stroke="var(--color-accent)" strokeWidth="3" />
+          <circle cx="178" cy="100" r="6" fill="var(--color-accent)" />
+        </motion.g>
+      </svg>
+
+      {/* partículas de "corriente" subiendo */}
+      {[
+        { left: "12%", delay: 0, dur: 5, color: "--color-accent" },
+        { left: "24%", delay: 1.4, dur: 6, color: "--color-accent-2" },
+        { left: "68%", delay: 0.6, dur: 5.5, color: "--color-accent" },
+        { left: "82%", delay: 2.1, dur: 6.5, color: "--color-accent-2" },
+        { left: "90%", delay: 1, dur: 5, color: "--color-accent" },
+      ].map((p, i) => (
+        <motion.span
+          key={i}
+          aria-hidden
+          className="pointer-events-none absolute bottom-0 h-1.5 w-1.5 rounded-full"
+          style={{ left: p.left, background: `var(${p.color})`, boxShadow: `0 0 12px var(${p.color})` }}
+          initial={{ y: 0, opacity: 0 }}
+          animate={{ y: -800, opacity: [0, 1, 1, 0] }}
+          transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: "linear" }}
+        />
+      ))}
+
+      {/* corchetes técnicos en las esquinas */}
+      <div aria-hidden className="pointer-events-none absolute left-8 top-8 h-14 w-14 border-l-2 border-t-2 border-[var(--color-accent)]/40" />
+      <div aria-hidden className="pointer-events-none absolute right-8 bottom-8 h-14 w-14 border-b-2 border-r-2 border-[var(--color-accent)]/40" />
+
+      {/* badges flotantes con magnitudes clave */}
+      {[
+        { txt: "Z = √(R²+X²)", top: "26%", right: "8%", delay: 1.1, accent: "--color-accent" },
+        { txt: "ω = 314 rad/s", top: "44%", right: "16%", delay: 1.35, accent: "--color-accent-2" },
+        { txt: "φ → desfase", top: "62%", right: "9%", delay: 1.6, accent: "--color-warn" },
+      ].map((b) => (
+        <motion.div
+          key={b.txt}
+          aria-hidden
+          className="pointer-events-none absolute z-10 rounded-lg border bg-[var(--color-bg-card)]/70 px-4 py-2 font-mono text-sm backdrop-blur-sm"
+          style={{ top: b.top, right: b.right, borderColor: `color-mix(in srgb, var(${b.accent}) 45%, transparent)`, color: `var(${b.accent})` }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+          transition={{
+            opacity: { duration: 0.5, delay: b.delay },
+            scale: { duration: 0.5, delay: b.delay },
+            y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: b.delay },
+          }}
+        >
+          {b.txt}
+        </motion.div>
+      ))}
 
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -44,7 +109,13 @@ export default function Slide01Cover() {
         transition={{ duration: 0.5 }}
         className="relative z-10 flex items-center gap-4 font-mono text-sm uppercase tracking-[0.3em] text-[var(--color-accent)]"
       >
-        <Zap size={18} className="fill-[var(--color-accent)]" />
+        <motion.span
+          animate={{ opacity: [1, 0.4, 1], scale: [1, 1.2, 1] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="inline-flex"
+        >
+          <Zap size={18} className="fill-[var(--color-accent)]" />
+        </motion.span>
         <span>Laboratorio N°8 · Electromagnetismo</span>
       </motion.div>
 
